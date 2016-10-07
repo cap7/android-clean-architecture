@@ -38,7 +38,6 @@ public class RegistrarPersonaPresenter implements Presenter<RegistrarPersonaView
         personaModel.setPersonaCorreo(correo);
         personaModel.setPersonaTelefono(telefono);
         setRegistrarPersonaPresenter(personaModel);
-        //return personaModel;
     }
 
     private void setRegistrarPersonaPresenter(PersonaModel personaModel){

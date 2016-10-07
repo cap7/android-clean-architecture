@@ -35,7 +35,6 @@ public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, Lis
     }
 
     public void getListarPersonaPresenter(){
-        //this.showViewLoading();
         listarPersonaInteractor.getListarPersonaInteractor(this);
     }
 
@@ -55,23 +54,12 @@ public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, Lis
         listarPersonaInteractor = null;
     }
 
-    /*private void showViewLoading() {
-        listarPersonaView.showLoading();
-    }
-
-    private void hideViewLoading() {
-        listarPersonaView.hideLoading();
-    }*/
-
-
     @Override
     public void onListarPersonaSuccess(ArrayList<Persona> persona) {
 
         personaModelMapper = new PersonaModelMapper();
         personaModelArrayList = personaModelMapper.mapListPersonaModel(persona);
         this.listarPersonaView.listenerListarPersona(personaModelArrayList);
-        //this.hideViewLoading();
-
     }
 
     @Override

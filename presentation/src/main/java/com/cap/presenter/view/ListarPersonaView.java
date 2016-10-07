@@ -12,6 +12,4 @@ import java.util.List;
 public interface ListarPersonaView extends BaseView {
 
     void listenerListarPersona(ArrayList<PersonaModel> renderListaPersona);
-    /*void showLoading();
-    void hideLoading();*/
 }
