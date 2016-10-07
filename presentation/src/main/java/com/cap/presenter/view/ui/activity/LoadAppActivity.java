@@ -1,17 +1,8 @@
 package com.cap.presenter.view.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.cap.presenter.R;
@@ -19,64 +10,64 @@ import com.cap.presenter.navigation.Navigator;
 import com.cap.presenter.presenter.ListarPersonaPresenter;
 import com.cap.presenter.view.ListarPersonaView;
 import com.cap.presenter.view.ui.fragment.ListarPersonaFragment;
+import com.cap.presenter.view.ui.fragment.LoadAppFragment;
 import com.cap.presenter.viewmodel.PersonaModel;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
-public class ListarPersonaActivity extends BaseActivity /*implements ListarPersonaView*/ {
+/**
+ * Created by CAP on 07/10/2016.
+ */
 
-    public static Intent getCallingIntent(Context context,ArrayList<PersonaModel> personaModelArrayList){
-        Intent callingIntent = new Intent(context,ListarPersonaActivity.class);
-        callingIntent.putExtra("INTENT_PERSONA",personaModelArrayList);
-        return callingIntent;
-    }
+public class LoadAppActivity extends BaseActivity implements LoadAppFragment.RenderListarPersona /*implements ListarPersonaView*/  {
 
     /*@BindView(R.id.lyLoadRegistrarPersona)
-    RelativeLayout linearLayoutLoad;*/
+    RelativeLayout linearLayoutLoad;
+
+    private ListarPersonaPresenter listarPersonaPresenter;*/
 
     private Navigator navigator;
 
-    private ListarPersonaPresenter listarPersonaPresenter;
-
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_listar_persona;
+        return R.layout.activity_load_app;
     }
 
     @Override
     public void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
+        if(savedInstanceState == null){
+            showFragment(new LoadAppFragment(),R.id.frLoadApp,null);
+        }
         /*listarPersonaPresenter = new ListarPersonaPresenter();
         listarPersonaPresenter.setView(this);
         if(savedInstanceState == null){
             listarPersonaPresenter.getListarPersonaPresenter();
         }*/
-        if(savedInstanceState == null){
-            Bundle bundle = getIntent().getExtras();
-            showFragment(new ListarPersonaFragment(),R.id.frListarPersona,bundle);
-        }
     }
 
-    @OnClick(R.id.fabOpenRegistrarPersona)
-    void onClickRegistrarPersona(){
+    @Override
+    public void renderListarPersonaItem(ArrayList<PersonaModel> renderListaPersona) {
         navigator = new Navigator();
-        navigator.navigateToRegistrarPersona(ListarPersonaActivity.this);
+        if(renderListaPersona !=null) {
+            navigator.navigateToListarPersona(LoadAppActivity.this, renderListaPersona);
+        }
+        finish();
     }
 
-    /*@Override
-    public void listenerListarPersona(ArrayList<PersonaModel> renderListaPersona) {
-        Bundle bundle = new Bundle();
+    //@Override
+    //public void listenerListarPersona(ArrayList<PersonaModel> renderListaPersona) {
+        /*Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("ListarPersona", renderListaPersona);
         if(bundle!=null) {
             //hideLoading();
             showFragment(new ListarPersonaFragment(), R.id.frListarPersona, bundle);
-        }
-    }
+        }*/
+    //}
 
-    @Override
+    /*@Override
     public void showLoading() {
         this.linearLayoutLoad.setVisibility(View.VISIBLE);
         this.setProgressBarIndeterminate(true);

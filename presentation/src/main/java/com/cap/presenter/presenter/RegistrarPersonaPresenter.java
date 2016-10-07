@@ -63,7 +63,8 @@ public class RegistrarPersonaPresenter implements Presenter<RegistrarPersonaView
 
     @Override
     public void destroy() {
-
+        registrarPersonaView = null;
+        registrarPersonaInteractor = null;
     }
 
     @Override

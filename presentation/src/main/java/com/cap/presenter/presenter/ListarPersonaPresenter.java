@@ -32,7 +32,6 @@ public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, Lis
         this.listarPersonaView =  view;
         ListarPersonaRepository listarPersonaRepository = new ListarPersonaDataRepository(new DataStoreFactory(this.listarPersonaView.getContext()),new PersonaEntityMapper());
         listarPersonaInteractor = new ListarPersonaInteractor(listarPersonaRepository);
-
     }
 
     public void getListarPersonaPresenter(){
@@ -52,16 +51,17 @@ public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, Lis
 
     @Override
     public void destroy() {
-
+        listarPersonaView = null;
+        listarPersonaInteractor = null;
     }
 
-    private void showViewLoading() {
+    /*private void showViewLoading() {
         listarPersonaView.showLoading();
     }
 
     private void hideViewLoading() {
         listarPersonaView.hideLoading();
-    }
+    }*/
 
 
     @Override
@@ -70,7 +70,7 @@ public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, Lis
         personaModelMapper = new PersonaModelMapper();
         personaModelArrayList = personaModelMapper.mapListPersonaModel(persona);
         this.listarPersonaView.listenerListarPersona(personaModelArrayList);
-        this.hideViewLoading();
+        //this.hideViewLoading();
 
     }
 

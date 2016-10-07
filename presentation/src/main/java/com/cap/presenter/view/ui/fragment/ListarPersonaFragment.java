@@ -37,7 +37,7 @@ public class ListarPersonaFragment extends BaseFragment{
     public void initViewFragment(Bundle bundle) {
         super.initViewFragment(bundle);
         listarPersonaAdapter = new ListarPersonaAdapter();
-        listarPersonaArrayList = getArguments().getParcelableArrayList("ListarPersona");
+        listarPersonaArrayList = getArguments().getParcelableArrayList("INTENT_PERSONA");
         configurarRecyclerView();
         renderPersonaListener(listarPersonaArrayList);
     }
@@ -60,6 +60,7 @@ public class ListarPersonaFragment extends BaseFragment{
     @Override
     public void onDestroy() {
         super.onDestroy();
+
     }
 
 

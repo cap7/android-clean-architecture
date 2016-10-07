@@ -70,6 +70,7 @@ public class RegistrarPersonaFragment extends BaseFragment implements RegistrarP
     @Override
     public void onDestroy() {
         super.onDestroy();
+        registrarPersonaPresenter.destroy();
     }
 
     @Override
