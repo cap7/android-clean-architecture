@@ -82,12 +82,9 @@ public class LoadAppFragment extends BaseFragment implements ListarPersonaView {
         renderListarPersona = null;
     }
 
-
     @Override
     public void listenerListarPersona(ArrayList<PersonaModel> itemListaPersona) {
         if(itemListaPersona != null) {
-            //linearLayoutLoad.setVisibility(View.GONE);
-            //getActivity().setProgressBarIndeterminateVisibility(false);
             renderListarPersona.renderListarPersonaItem(itemListaPersona);
         }
     }

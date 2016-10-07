@@ -38,8 +38,6 @@ public class RegistrarPersonaFragment extends BaseFragment implements RegistrarP
 
     private RegistrarPersonaPresenter registrarPersonaPresenter;
 
-
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_registrar_persona;

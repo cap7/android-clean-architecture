@@ -27,7 +27,6 @@ public class ListarPersonaFragment extends BaseFragment{
 
     private ArrayList<PersonaModel> listarPersonaArrayList;
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_listar_persona;
@@ -60,9 +59,7 @@ public class ListarPersonaFragment extends BaseFragment{
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
-
 
     private void configurarRecyclerView(){
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -70,7 +67,6 @@ public class ListarPersonaFragment extends BaseFragment{
     }
 
     public void renderPersonaListener(ArrayList<PersonaModel> personaModelListener) {
-
         listarPersonaAdapter.setItemPersona(personaModelListener);
         listarPersonaAdapter.notifyDataSetChanged();
     }
