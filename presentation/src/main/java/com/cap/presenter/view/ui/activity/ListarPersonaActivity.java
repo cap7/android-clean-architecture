@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.cap.presenter.R;
 import com.cap.presenter.navigation.Navigator;
-import com.cap.presenter.presenter.ListarPersonaPresenter;
 import com.cap.presenter.view.ui.fragment.ListarPersonaFragment;
 import com.cap.presenter.viewmodel.PersonaModel;
 
