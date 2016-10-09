@@ -26,7 +26,13 @@ public class RegistrarPersonaPresenter implements Presenter<RegistrarPersonaView
     @Override
     public void setView(RegistrarPersonaView view){
         this.registrarPersonaView = view;
-        RegistrarPersonaRepository registrarPersonaRepository = new RegistrarPersonaDataRepository(new DataStoreFactory(this.registrarPersonaView.getContext()),new PersonaEntityMapper());
+        RegistrarPersonaRepository registrarPersonaRepository
+                = new RegistrarPersonaDataRepository(
+                    new DataStoreFactory(
+                            this.registrarPersonaView.context()
+                        ),
+                    new PersonaEntityMapper()
+                );
         registrarPersonaInteractor = new RegistrarPersonaInteractor(registrarPersonaRepository);
     }
 

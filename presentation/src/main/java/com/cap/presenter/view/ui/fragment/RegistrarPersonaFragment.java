@@ -1,5 +1,6 @@
 package com.cap.presenter.view.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -98,5 +99,10 @@ public class RegistrarPersonaFragment extends BaseFragment implements RegistrarP
         apellidoMaternoEt.setText("");
         correoEt.setText("");
         telefonoEt.setText("");
+    }
+
+    @Override
+    public Context context() {
+        return getActivity().getApplication();
     }
 }

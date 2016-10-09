@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.cap.presenter.R;
 import com.cap.presenter.presenter.ListarPersonaPresenter;
-import com.cap.presenter.view.ListarPersonaView;
+import com.cap.presenter.view.LoadAppView;
 import com.cap.presenter.viewmodel.PersonaModel;
 
 import java.util.ArrayList;
@@ -19,7 +19,9 @@ import butterknife.BindView;
  * Created by CAP on 07/10/2016.
  */
 
-public class LoadAppFragment extends BaseFragment implements ListarPersonaView {
+public class LoadAppFragment extends BaseFragment implements LoadAppView {
+
+
 
     public interface RenderListarPersona{
         void renderListarPersonaItem(ArrayList<PersonaModel> renderListaPersona);
@@ -89,5 +91,8 @@ public class LoadAppFragment extends BaseFragment implements ListarPersonaView {
         }
     }
 
-
+    @Override
+    public Context context() {
+        return getActivity().getApplication();
+    }
 }

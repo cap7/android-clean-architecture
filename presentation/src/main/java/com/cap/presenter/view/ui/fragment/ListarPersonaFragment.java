@@ -1,5 +1,6 @@
 package com.cap.presenter.view.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.cap.presenter.R;
+import com.cap.presenter.view.ListarPersonaView;
 import com.cap.presenter.view.adapter.ListarPersonaAdapter;
 import com.cap.presenter.viewmodel.PersonaModel;
 
@@ -18,7 +20,7 @@ import butterknife.BindView;
  * Created by CAP on 30/09/2016.
  */
 
-public class ListarPersonaFragment extends BaseFragment{
+public class ListarPersonaFragment extends BaseFragment implements ListarPersonaView{
 
     @BindView(R.id.rvListaPersona)
     RecyclerView recyclerView;
@@ -61,14 +63,20 @@ public class ListarPersonaFragment extends BaseFragment{
         super.onDestroy();
     }
 
-    private void configurarRecyclerView(){
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    @Override
+    public void configurarRecyclerView(){
+        recyclerView.setLayoutManager(new LinearLayoutManager(context()));
         recyclerView.setAdapter(listarPersonaAdapter);
     }
 
+    @Override
     public void renderPersonaListener(ArrayList<PersonaModel> personaModelListener) {
         listarPersonaAdapter.setItemPersona(personaModelListener);
         listarPersonaAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public Context context() {
+        return getActivity().getApplication();
+    }
 }

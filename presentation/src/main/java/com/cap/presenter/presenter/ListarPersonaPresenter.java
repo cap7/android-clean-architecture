@@ -9,7 +9,7 @@ import com.cap.domain.interactor.ListarPersonaCallback;
 import com.cap.domain.interactor.ListarPersonaInteractor;
 import com.cap.domain.model.Persona;
 import com.cap.domain.repository.ListarPersonaRepository;
-import com.cap.presenter.view.ListarPersonaView;
+import com.cap.presenter.view.LoadAppView;
 import com.cap.presenter.viewmodel.PersonaModel;
 import com.cap.presenter.viewmodel.mapper.PersonaModelMapper;
 
@@ -19,18 +19,24 @@ import java.util.ArrayList;
  * Created by CAP on 30/09/2016.
  */
 
-public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, ListarPersonaCallback {
+public class ListarPersonaPresenter implements Presenter<LoadAppView>, ListarPersonaCallback {
 
     private ListarPersonaInteractor listarPersonaInteractor;
-    private ListarPersonaView listarPersonaView;
+    private LoadAppView loadAppView;
     private PersonaModelMapper personaModelMapper;
     private ArrayList<PersonaModel> personaModelArrayList;
 
 
     @Override
-    public void setView(ListarPersonaView view) {
-        this.listarPersonaView =  view;
-        ListarPersonaRepository listarPersonaRepository = new ListarPersonaDataRepository(new DataStoreFactory(this.listarPersonaView.getContext()),new PersonaEntityMapper());
+    public void setView(LoadAppView view) {
+        this.loadAppView =  view;
+        ListarPersonaRepository listarPersonaRepository =
+                new ListarPersonaDataRepository(
+                        new DataStoreFactory(
+                                this.loadAppView.context()
+                        ),
+                        new PersonaEntityMapper()
+                );
         listarPersonaInteractor = new ListarPersonaInteractor(listarPersonaRepository);
     }
 
@@ -50,7 +56,7 @@ public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, Lis
 
     @Override
     public void destroy() {
-        listarPersonaView = null;
+        loadAppView = null;
         listarPersonaInteractor = null;
     }
 
@@ -59,7 +65,7 @@ public class ListarPersonaPresenter implements Presenter<ListarPersonaView>, Lis
 
         personaModelMapper = new PersonaModelMapper();
         personaModelArrayList = personaModelMapper.mapListPersonaModel(persona);
-        this.listarPersonaView.listenerListarPersona(personaModelArrayList);
+        this.loadAppView.listenerListarPersona(personaModelArrayList);
     }
 
     @Override
