@@ -38,8 +38,4 @@ public class LoadAppActivity extends BaseActivity implements LoadAppFragment.Ren
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 }
