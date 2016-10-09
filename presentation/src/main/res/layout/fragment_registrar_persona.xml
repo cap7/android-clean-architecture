@@ -51,6 +51,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone|number"
                 android:id="@+id/etTelefono"/>
         </LinearLayout>
         <android.support.design.widget.FloatingActionButton

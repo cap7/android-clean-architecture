@@ -9,4 +9,6 @@ import com.cap.presenter.viewmodel.PersonaModel;
 public interface RegistrarPersonaView extends BaseView{
 
     void showRegistroPersonaSuccess(String mensaje);
+
+    void showValidacionCampos(String mensaje);
 }

@@ -76,6 +76,11 @@ public class RegistrarPersonaFragment extends BaseFragment implements RegistrarP
         Toast.makeText(getContext(),mensaje,Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void showValidacionCampos(String mensaje) {
+        Toast.makeText(getContext(),mensaje,Toast.LENGTH_SHORT).show();
+    }
+
     @OnClick(R.id.fabRegistrarPersona)
     void onClickRegistrarPersona(){
         registrarPersonaPresenter.setDatosPersonaModel(

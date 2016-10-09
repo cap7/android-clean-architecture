@@ -37,4 +37,9 @@ public class LoadAppActivity extends BaseActivity implements LoadAppFragment.Ren
             navigator.navigateToListarPersona(LoadAppActivity.this, renderListaPersona);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

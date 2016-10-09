@@ -31,13 +31,17 @@ public class RegistrarPersonaPresenter implements Presenter<RegistrarPersonaView
     }
 
     public void setDatosPersonaModel(String nombre,String apellidoPaterno, String apellidoMaterno, String correo, String telefono){
-        PersonaModel personaModel = new PersonaModel();
-        personaModel.setPersonaNombre(nombre);
-        personaModel.setPersonaApellidoPaterno(apellidoPaterno);
-        personaModel.setPersonaApellidoMaterno(apellidoMaterno);
-        personaModel.setPersonaCorreo(correo);
-        personaModel.setPersonaTelefono(telefono);
-        setRegistrarPersonaPresenter(personaModel);
+        if(nombre.equals("") || apellidoPaterno.equals("") || apellidoMaterno.equals("") || correo.equals("") || telefono.equals("")) {
+            registrarPersonaView.showValidacionCampos("Completar todos los campos");
+        }else {
+            PersonaModel personaModel = new PersonaModel();
+            personaModel.setPersonaNombre(nombre);
+            personaModel.setPersonaApellidoPaterno(apellidoPaterno);
+            personaModel.setPersonaApellidoMaterno(apellidoMaterno);
+            personaModel.setPersonaCorreo(correo);
+            personaModel.setPersonaTelefono(telefono);
+            setRegistrarPersonaPresenter(personaModel);
+        }
     }
 
     private void setRegistrarPersonaPresenter(PersonaModel personaModel){
