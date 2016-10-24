@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.cap.presenter.view.ui.activity.ListarPersonaActivity;
+import com.cap.presenter.view.ui.activity.LoadAppActivity;
 import com.cap.presenter.view.ui.activity.RegistrarPersonaActivity;
 import com.cap.presenter.viewmodel.PersonaModel;
 
@@ -14,6 +15,11 @@ import java.util.ArrayList;
  */
 
 public class Navigator {
+
+    public void navigateToLoadApp(Context context){
+        Intent intentToLoadApp = new Intent(context, LoadAppActivity.class);
+        context.startActivity(intentToLoadApp);
+    }
 
     public void navigateToRegistrarPersona(Context context){
         Intent intentToRegistrarPersona = new Intent(context, RegistrarPersonaActivity.class);

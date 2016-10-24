@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.cap.data.entity.PersonaEntity;
 import com.cap.data.entity.PersonaResponse;
+import com.cap.data.entity.UsuarioEntity;
+import com.cap.data.entity.UsuarioResponse;
 import com.cap.data.net.ApiConnectionImpl;
 import com.cap.data.net.RestApi;
 import com.cap.domain.repository.RepositoryCallback;
@@ -25,6 +27,29 @@ public class CloudDataStore implements  DataStore{
     }
 
 
+    @Override
+    public void dataLoginUsuario(UsuarioEntity usuarioEntity, final RepositoryCallback repositoryCallback) {
+        Call<UsuarioResponse> usuarioEntityCall = restApi.loginPersonaApi(usuarioEntity);
+        usuarioEntityCall.enqueue(new Callback<UsuarioResponse>() {
+            @Override
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                if(response != null){
+                    repositoryCallback.onSuccess(response.body());
+                }else {
+                    repositoryCallback.onError("");
+                }
+            }
+            @Override
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+                String message="";
+                if(t!=null) {
+                    message= t.getMessage();
+                }
+                Log.v("ERROR API",message);
+                repositoryCallback.onError("");
+            }
+        });
+    }
 
     @Override
     public void dataRegistrarPersona(final PersonaEntity personaEntity, final RepositoryCallback repositoryCallback) {
